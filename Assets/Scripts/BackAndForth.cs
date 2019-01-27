@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BackAndForth : MonoBehaviour {
-	[SerializeField]
-	private int speed = 1;
+	public int speed = 1;
 	[SerializeField]
 	private int maxDistance = 1;
 	private Vector2 startPosition;
@@ -30,7 +29,7 @@ public class BackAndForth : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		isFalling = true;
 		rigidbody.gravityScale = 1;
+		isFalling = true;
 	}
 }

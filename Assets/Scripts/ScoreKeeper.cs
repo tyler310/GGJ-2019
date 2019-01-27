@@ -20,6 +20,5 @@ public class ScoreKeeper : MonoBehaviour {
 		scoreText.text = scoreAmount.ToString();
 		// increase scoreAmount by (1 * scoreMultiplier) everytime a Steamer lands successfully
 		//OnTriggerEnter2D();
-
 	}
 }
