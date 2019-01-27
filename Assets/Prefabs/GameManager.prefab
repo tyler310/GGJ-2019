@@ -51,7 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2c4b11ab0ab452c874a8be5ca10654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go: {fileID: 0}
-  canvas: {fileID: 0}
+  steamer: {fileID: 114646909635054456, guid: 3eff225f9e9fa4e68a770d5ad12dcb1f, type: 2}
   mainCamera: {fileID: 0}
   offsetValue: 0.005
+  spawnPoint: {fileID: 0}
+  maxDistance: 0.017
+  speed: 0.5
