@@ -10,15 +10,19 @@ public class ScoreKeeper : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		scoreText = GetComponent<Text>();
 		scoreAmount = 0;
 		scoreMultiplier = 1;
-		scoreText = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		scoreText.text = scoreAmount.ToString();
-		// increase scoreAmount by (1 * scoreMultiplier) everytime a Steamer lands successfully
-		//OnTriggerEnter2D();
+	}
+
+	public void UpdateScore(){
+		// increase scoreAmount by 1 everytime a Steamer lands successfully
+		// polish: increase scoreAmount by (1 * scoreMultiplier)  
+		scoreAmount++;
 	}
 }
