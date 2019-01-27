@@ -19,7 +19,6 @@ public class BackAndForth : MonoBehaviour {
     	newPosition = transform.position;
 		rigidbody = GetComponent<Rigidbody2D>();
 		rigidbody.gravityScale = 0;
-
 	}
 	
 	// Update is called once per frame
@@ -31,7 +30,7 @@ public class BackAndForth : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		rigidbody.gravityScale = 1;
 		isFalling = true;
+		rigidbody.gravityScale = 1;
 	}
 }

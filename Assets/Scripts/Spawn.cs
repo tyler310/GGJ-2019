@@ -7,8 +7,6 @@ public class Spawn : MonoBehaviour {
 	public GameObject spawnPoint;
 	public Canvas canvas;
 
-	private float floor = 0;
-
 	// Use this for initialization
 	void Start () {
 		Vector2 point = spawnPoint.transform.position;
