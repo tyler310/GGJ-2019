@@ -20,10 +20,14 @@ public class MaxHeightTrigger : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Stack") && !isTriggered)
 		{
-			Debug.Log("Triggered");
 			isTriggered = true;
 			Vector3 panTo = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + offset, -1);
-			mainCamera.transform.DOMove(panTo, panTime).SetEase(Ease.Linear).OnComplete(() => isTriggered = false);
+			mainCamera.transform.DOMove(panTo, panTime).SetEase(Ease.Linear).OnComplete(onCameraPanComplete);
 		}
+	}
+
+	private void onCameraPanComplete()
+	{
+		isTriggered = false;
 	}
 }

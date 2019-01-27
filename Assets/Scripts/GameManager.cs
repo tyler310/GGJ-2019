@@ -4,32 +4,53 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] 
+	private DummySteamer steamer;
+	[SerializeField]
+	private Camera mainCamera;
+	[SerializeField]
+	private float offsetValue;
+	[SerializeField]
+	private GameObject spawnPoint;
 
-	[SerializeField] private GameObject go;
-	[SerializeField] private Canvas canvas;
-	[SerializeField] private Camera mainCamera;
-	[SerializeField] private float offsetValue;
+	public float maxDistance;
+	public float speed;
 	
 	private Vector3 offset;
+	private Vector2 startPosition;
+	private Vector2 newPosition;
+	private DummySteamer steamerDropped;
+	
 	void Awake()
 	{
+		startPosition = spawnPoint.transform.position;
+		newPosition = spawnPoint.transform.position;
+		steamerDropped = Instantiate(steamer, startPosition, Quaternion.identity);
+		steamerDropped.onSteamerDropCompleted += SpawnSteamer;
+		
 		offset = new Vector3(0, offsetValue, 0);	
+	}
+
+	void FixedUpdate()
+	{
+		newPosition.x = (maxDistance * Mathf.Sin(Time.time * speed));
+		spawnPoint.transform.position = new Vector2(newPosition.x, spawnPoint.transform.position.y);
 	}
 	
 	void Update ()
 	{
-		Vector2 spawnPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-//		Vector2 spawnPos = Input.mousePosition;
-
 		if (Input.GetMouseButtonDown(0))
 		{
-			GameObject block = Instantiate(go, spawnPos, Quaternion.identity);
+			steamerDropped.Drop();
+//			DummySteamer steamerInstance = Instantiate(steamer, startPosition, Quaternion.identity);
+//			steamerInstance.Drop();
 		}
-//		MoveCamera();
 	}
 
-	private void MoveCamera()
+	private void SpawnSteamer()
 	{
-		mainCamera.transform.position = mainCamera.transform.position + offset;
+		steamerDropped.onSteamerDropCompleted -= SpawnSteamer;
+		steamerDropped = Instantiate(steamer, spawnPoint.transform.position, Quaternion.identity);
+		steamerDropped.onSteamerDropCompleted += SpawnSteamer;
 	}
 }
