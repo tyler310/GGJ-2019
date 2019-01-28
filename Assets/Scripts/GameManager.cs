@@ -86,11 +86,10 @@ public class GameManager : MonoBehaviour
 		
 		float distance = Mathf.Sqrt(tmp * tmp);
 		
-//		return Mathf.Sqrt((float) ((double) this.x * (double) this.x + (double) this.y * (double) this.y));
-		
 		if (distance <= 0.15f)
 		{
 			steamer.transform.position = new Vector2(previouslyQueued.transform.position.x, steamer.transform.position.y);
+			windbox.magnitude = windbox.magnitude * 1.05f;
 		}
 		else if (distance <= 0.3f)
 		{
