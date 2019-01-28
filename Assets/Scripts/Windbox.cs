@@ -5,15 +5,12 @@ using UnityEngine;
 public class Windbox : MonoBehaviour
 {
     public AreaEffector2D windbox;
-    public int variant;
-    public int magnitude;
-    void Awake()
-    {
-        
-    }
+    public float variant;
+    public float magnitude;
     
     void FixedUpdate()
     {
+//        Mathf.Clamp(magnitude, 0, 20f);
         windbox.forceMagnitude = Mathf.Sin(Time.time * variant) * magnitude;
     }
 }

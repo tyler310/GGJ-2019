@@ -8,7 +8,7 @@ public class BackAndForth : MonoBehaviour {
 	private int maxDistance = 1;
 	private Vector2 startPosition;
 	private Vector2 newPosition;
-	private Rigidbody2D rigidbody;
+	private Rigidbody2D rb;
 	private bool isFalling;
 
 	// Use this for initialization
@@ -16,8 +16,8 @@ public class BackAndForth : MonoBehaviour {
 		isFalling = false;
 		startPosition = transform.position;
     	newPosition = transform.position;
-		rigidbody = GetComponent<Rigidbody2D>();
-		rigidbody.gravityScale = 0;
+		rb = GetComponent<Rigidbody2D>();
+		rb.gravityScale = 0;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class BackAndForth : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		rigidbody.gravityScale = 1;
+		rb.gravityScale = 1;
 		isFalling = true;
 	}
 }

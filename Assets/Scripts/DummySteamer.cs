@@ -7,22 +7,21 @@ public class DummySteamer : MonoBehaviour
     public delegate void OnSteamerDropCompleted();
     public event OnSteamerDropCompleted onSteamerDropCompleted;
     
-    public int speed = 1;
+    public float speed = 1;
     [SerializeField]
-    private int maxDistance = 1;
-    private Vector2 startPosition;
+    private float maxDistance = 1;
     private Vector2 newPosition;
     [SerializeField]
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb2d;
     
-    private bool isFalling = false;
+    [SerializeField]
+    private bool isFalling;
     private bool collisionComplete = false;
     
     void Awake () {
-        startPosition = transform.position;
         newPosition = transform.position;
-//        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.gravityScale = 0;
+        rb2d = GetComponent<Rigidbody2D>();
+        rb2d.gravityScale = 0;
     }
     
     void Update () {
@@ -48,6 +47,6 @@ public class DummySteamer : MonoBehaviour
         
     public void Drop() {
         isFalling = true;
-        rigidbody.gravityScale = 1;
+        rb2d.gravityScale = 1;
     }
 }
