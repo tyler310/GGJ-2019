@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 	private Vector2 startPosition;
 	private Vector2 newPosition;
 	private DummySteamer steamerDropped;
+	private ScoreKeeper scoreKeeper;
+
+
 	
 	void Awake()
 	{
@@ -29,6 +33,8 @@ public class GameManager : MonoBehaviour
 		steamerDropped.onSteamerDropCompleted += SpawnSteamer;
 		
 		offset = new Vector3(0, offsetValue, 0);	
+
+		scoreKeeper = gameObject.AddComponent<ScoreKeeper>();
 	}
 
 	void FixedUpdate()
@@ -44,6 +50,17 @@ public class GameManager : MonoBehaviour
 			steamerDropped.Drop();
 //			DummySteamer steamerInstance = Instantiate(steamer, startPosition, Quaternion.identity);
 //			steamerInstance.Drop();
+		}
+
+		if (steamerDropped.collisionComplete)
+		{
+			scoreKeeper.UpdateScore();
+		}
+
+		if (Input.GetKeyDown(KeyCode.R)){
+			Debug.Log("Lorde was here");
+			Scene currentScene = SceneManager.GetActiveScene();
+			SceneManager.LoadScene(currentScene.name);
 		}
 	}
 

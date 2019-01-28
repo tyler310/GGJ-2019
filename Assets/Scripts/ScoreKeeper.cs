@@ -10,7 +10,6 @@ public class ScoreKeeper : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		scoreText = GetComponent<Text>();
 		scoreAmount = 0;
 		scoreMultiplier = 1;
 	}
@@ -18,6 +17,7 @@ public class ScoreKeeper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		scoreText.text = scoreAmount.ToString();
+		print(scoreAmount);
 	}
 
 	public void UpdateScore(){

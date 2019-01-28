@@ -7,6 +7,8 @@ public class DummySteamer : MonoBehaviour
     public delegate void OnSteamerDropCompleted();
     public event OnSteamerDropCompleted onSteamerDropCompleted;
     
+    public bool collisionComplete = false;
+
     public int speed = 1;
     [SerializeField]
     private int maxDistance = 1;
@@ -16,7 +18,7 @@ public class DummySteamer : MonoBehaviour
     private Rigidbody2D rigidbody;
     
     private bool isFalling = false;
-    private bool collisionComplete = false;
+
     
     void Awake () {
         startPosition = transform.position;
@@ -26,7 +28,8 @@ public class DummySteamer : MonoBehaviour
     }
     
     void Update () {
-        if (!isFalling){
+        if (!isFalling)
+        {
             newPosition.x = (maxDistance * Mathf.Sin(Time.time * speed));
             transform.position = newPosition;
         }

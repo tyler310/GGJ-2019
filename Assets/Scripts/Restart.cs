@@ -9,13 +9,13 @@ public class Restart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		restartButton = GetComponent<Button>();
-
+		restartButton.onClick.AddListener(PlayAgain);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//when GameOver, 
-		restartButton.onClick.AddListener(PlayAgain);
+		
 	}
 	public void PlayAgain() {
 		//TODO: Load a new game
