@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreKeeper : MonoBehaviour {
 	public int scoreAmount;
 	public int scoreMultiplier;
-	private Text scoreText;
+	[SerializeField] private Text scoreText;
 	
 	// Use this for initialization
 	void Start () {
